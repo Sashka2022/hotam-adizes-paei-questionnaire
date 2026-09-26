@@ -1,3 +1,4 @@
 .vercel
+.env*
 *.pdf
 .DS_Store
