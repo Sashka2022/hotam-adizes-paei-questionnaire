@@ -186,13 +186,14 @@ body.hotam {
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   background: var(--bg2);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .option-text {
   font-size: var(--fs-body);
   color: var(--fg1);
-  flex: 1 1 220px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .value-buttons {
@@ -351,14 +352,36 @@ body.hotam {
   .results-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 480px) {
-  .site-header { padding: var(--sp-4) var(--sp-5); }
-  #app { padding: 0 var(--sp-4) var(--sp-16); }
+@media (max-width: 600px) {
+  .site-header { padding: 6px var(--sp-5); }
+  .site-header .logo { height: 24px; }
+  #app { padding: 0 var(--sp-4) var(--sp-6); }
   .card { padding: var(--sp-5); }
-  .nav-row { flex-wrap: wrap; }
-  .nav-row .btn { flex: 1 1 100%; }
+  .nav-row-results { flex-wrap: wrap; }
+  .nav-row-results .btn { flex: 1 1 100%; }
   .results-meta { flex-direction: column; gap: var(--sp-1); }
   .comparison-table th, .comparison-table td { padding: var(--sp-2); font-size: var(--fs-micro); }
+
+  /* ===== שאלון: תצוגה מכווצת שנכנסת במסך אחד ללא גלילה ===== */
+  .progress-wrap { margin-bottom: 8px; }
+  .progress-meta { font-size: 11px; margin-bottom: 4px; }
+  .progress-bar-track { height: 6px; }
+
+  .quiz-card { min-height: 0; padding: 12px 14px; margin-bottom: 10px; }
+
+  .question-statement { font-size: 17px; line-height: 1.2; margin-bottom: 10px; }
+
+  .options-grid { gap: 6px; }
+  .option-row { padding: 6px 10px; gap: 8px; border-radius: var(--r-sm); }
+  .option-text { font-size: 12.5px; line-height: 1.25; }
+
+  .value-buttons { gap: 4px; }
+  .value-btn { width: 28px; height: 28px; font-size: 12px; border-width: 1.5px; }
+
+  .hint-text { display: none; }
+
+  .nav-row { gap: 8px; }
+  .nav-row .btn { padding: 10px 12px; font-size: 14px; }
 }
 
 /* ===== טקסט צף (Toast) ===== */
