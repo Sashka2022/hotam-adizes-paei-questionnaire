@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שאלון אדיג'ס – מיפוי סגנונות החלטה וניהול</title>
+<link rel="icon" href="assets/logo/hotam-logo-hebrew.png">
+<link rel="stylesheet" href="css/hotam-tokens.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+</head>
+<body class="hotam">
+
+<header class="site-header no-print">
+  <img class="logo" src="assets/logo/hotam-logo-hebrew.png" alt="חותם – אחריות לחינוך בישראל">
+</header>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+<main id="app">
+
+  <!-- מסך א׳: פתיחה והנחיות -->
+  <section id="screen-welcome" class="screen">
+    <div class="card welcome-card">
+      <p class="eyebrow">כלי מיפוי ניהולי · PAEI</p>
+      <h1>שאלון אדיג'ס – מיפוי סגנונות החלטה וניהול</h1>
+
+      <label class="field-label" for="participant-name">שם הממלא/ת (רשות)</label>
+      <input type="text" id="participant-name" class="text-input" placeholder="הקלד/י את שמך המלא">
+
+      <div class="lede instructions">
+        <p>לפניך 20 אמירות המתייחסות לדרך הפעולה שלך בעבודה. תשובותיך צריכות לשקף איך את/ה נוהג/ת בפועל ולא מה את/ה חושב/ת שנכון או צריך לעשות.</p>
+        <p>למול כל אמירה מופיעים 4 אפיונים. עליך לדרג אותם באמצעות חלוקת הערכים <strong>8, 4, 2, 1</strong> (כל ערך ניתן לשימוש פעם אחת בלבד בכל שאלה):</p>
+      </div>
+
+      <ul class="scoring-legend">
+        <li><span class="chip chip-8">8</span> נקודות – לאפיון שהכי הולם אותך.</li>
+        <li><span class="chip chip-4">4</span> נקודות – כאשר האפיון מתאים לפעמים.</li>
+        <li><span class="chip chip-2">2</span> נקודות – כאשר האפיון מתאים מעט מאוד.</li>
+        <li><span class="chip chip-1">1</span> נקודה – כאשר האפיון הכי פחות מתאים לך.</li>
+      </ul>
+
+      <button id="btn-start" class="btn btn-primary btn-lg">התחל/י במיפוי</button>
+    </div>
+  </section>
+
+  <!-- מסך ב׳: השאלון ההדרגתי -->
+  <section id="screen-quiz" class="screen hidden">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="progress-label">שאלה 1 מתוך 20</span>
+        <span id="progress-percent">5%</span>
+      </div>
+      <div class="progress-bar-track">
+        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <div class="card quiz-card">
+      <div id="question-wrap" class="question-wrap">
+        <h2 id="question-statement" class="question-statement"></h2>
+        <div id="options-grid" class="options-grid"></div>
+        <p class="hint-text">שבצ/י את הערכים 8, 4, 2 ו-1 — כל ערך פעם אחת בלבד.</p>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button id="btn-prev" class="btn btn-ghost">הקודם</button>
+      <button id="btn-next" class="btn btn-primary" disabled>הבא</button>
+    </div>
+  </section>
+
+  <!-- מסך ג׳: תוצאות המיפוי האישי -->
+  <section id="screen-results" class="screen hidden">
+    <div id="print-area">
+
+      <div class="results-header card">
+        <img class="logo logo-print" src="assets/logo/hotam-logo-hebrew.png" alt="חותם">
+        <h1>מיפוי סגנונות החלטה וניהול – PAEI</h1>
+        <div class="results-meta">
+          <span id="result-name"></span>
+          <span id="result-date"></span>
+        </div>
+        <div class="paei-code" id="paei-code"></div>
+      </div>
+
+      <div class="card results-grid">
+        <div class="chart-wrap">
+          <canvas id="paei-chart"></canvas>
+        </div>
+        <div id="badges-wrap" class="badges-wrap"></div>
+      </div>
+
+      <div id="highlight-styles"></div>
+
+      <div class="card">
+        <h2>טבלת השוואה מלאה של ארבעת הסגנונות</h2>
+        <div class="table-scroll">
+          <table id="comparison-table" class="comparison-table"></table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nav-row no-print">
+      <button id="btn-restart" class="btn btn-ghost">מילוי שאלון חדש</button>
+      <button id="btn-print" class="btn btn-ghost">הדפסת המיפוי</button>
+      <button id="btn-pdf" class="btn btn-primary">הורדה כ-PDF</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

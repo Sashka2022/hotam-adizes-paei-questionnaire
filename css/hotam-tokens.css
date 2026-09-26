@@ -1,0 +1,193 @@
+/* ============================================================
+   Hotam Design System — Colors & Type
+   חותם – אחריות לחינוך בישראל
+   ============================================================ */
+
+/* ---- Fonts ----
+   Hebrew display: Heebo (Google Fonts) — closest open match to the
+   strong, rounded geometric Hebrew sans used on the logo + decks.
+   Latin display: Montserrat — matches the wide geometric "HOTAM" wordmark.
+   Arabic: Cairo — pairs with Heebo for Arabic-language materials.
+   Mono: JetBrains Mono — neutral fallback (not used in marketing). */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Montserrat:wght@500;600;700;800;900&family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ===== Brand palette (from hotam-brand.md + PPTX theme) ===== */
+  --hotam-blue:        #0048FF; /* primary — "כחול ראשי" (PPTX uses #0046FF, normalized) */
+  --hotam-blue-deep:   #3B5DEC;
+  --hotam-blue-mid:    #2680F1;
+  --hotam-sky:         #0DB4F4;
+  --hotam-teal:        #41CAC5;
+  --hotam-violet:      #6536EA;
+
+  /* Signature gradient (logo + hero backgrounds) */
+  --hotam-gradient:
+    linear-gradient(90deg,
+      #41CAC5 0%, #0DB4F4 22%, #2680F1 44%,
+      #3B5DEC 66%, #6536EA 85%, #0048FF 100%);
+
+  --hotam-gradient-diag:
+    linear-gradient(135deg,
+      #41CAC5 0%, #0DB4F4 25%, #2680F1 50%,
+      #3B5DEC 70%, #6536EA 88%, #0048FF 100%);
+
+  /* Neutrals */
+  --hotam-white:       #FEFEFE;
+  --hotam-bg-soft:     #F3F6FF;   /* subtle blue-tinted surface */
+  --hotam-bg-mute:     #F0F0F0;   /* PPTX content panel fill */
+  --hotam-ink:         #0B1440;   /* near-black, cooled toward the primary */
+  --hotam-ink-mute:    #4A5580;
+  --hotam-ink-soft:    #8390B2;
+  --hotam-line:        #DCE3F5;
+
+  /* ===== Semantic foreground/background ===== */
+  --fg1:   var(--hotam-ink);
+  --fg2:   var(--hotam-ink-mute);
+  --fg3:   var(--hotam-ink-soft);
+  --fg-accent: var(--hotam-blue);
+  --fg-on-dark: var(--hotam-white);
+
+  --bg1:   var(--hotam-white);
+  --bg2:   var(--hotam-bg-soft);
+  --bg3:   var(--hotam-bg-mute);
+  --bg-invert: var(--hotam-blue);
+
+  --border: var(--hotam-line);
+  --border-strong: var(--hotam-blue);
+
+  /* Category colors (from brand doc) */
+  --cat-primary: var(--hotam-blue);
+  --cat-sky:     var(--hotam-sky);
+  --cat-teal:    var(--hotam-teal);
+
+  /* ===== Type ===== */
+  --font-heb:    'Heebo', 'Assistant', 'Arial Hebrew', system-ui, sans-serif;
+  --font-latin:  'Montserrat', 'Heebo', system-ui, sans-serif;
+  --font-arabic: 'Cairo', 'Heebo', system-ui, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, monospace;
+
+  --font-display: var(--font-heb);
+  --font-body:    var(--font-heb);
+
+  /* Type scale (Hebrew-forward, dense display on top) */
+  --fs-hero:  clamp(56px, 8vw, 120px); /* logo-adjacent hero */
+  --fs-h1:    clamp(40px, 5vw, 72px);
+  --fs-h2:    clamp(30px, 3.6vw, 48px);
+  --fs-h3:    clamp(22px, 2.4vw, 30px);
+  --fs-h4:    20px;
+  --fs-lede:  20px;
+  --fs-body:  16px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-body:  1.55;
+
+  --tr-tight: -0.02em;
+  --tr-snug:  -0.01em;
+
+  /* ===== Spacing ===== */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* Radii — rounded but not pill-ish; reflects logo stroke caps */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+  --r-blob: 40% 60% 55% 45% / 50% 45% 55% 50%; /* for wave panels */
+
+  /* Shadows — very restrained; brand art carries the weight */
+  --shadow-sm: 0 1px 2px rgba(11,20,64,0.06);
+  --shadow-md: 0 8px 24px -10px rgba(11,20,64,0.18);
+  --shadow-lg: 0 24px 60px -20px rgba(11,20,64,0.25);
+  --shadow-brand: 0 18px 50px -20px rgba(0,72,255,0.45);
+}
+
+/* ===== Semantic element defaults (opt-in via .hotam scope) ===== */
+.hotam {
+  color: var(--fg1);
+  background: var(--bg1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  direction: rtl; /* primary locale */
+  text-wrap: pretty;
+}
+.hotam[lang="en"], .hotam.ltr { direction: ltr; font-family: var(--font-latin); }
+.hotam[lang="ar"]             { direction: rtl; font-family: var(--font-arabic); }
+
+.hotam h1, .hotam .h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-tight);
+  color: var(--hotam-blue);
+  margin: 0 0 var(--sp-6);
+}
+.hotam h2, .hotam .h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tr-snug);
+  color: var(--hotam-blue);
+  margin: 0 0 var(--sp-5);
+}
+.hotam h3, .hotam .h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.25;
+  color: var(--fg1);
+  margin: 0 0 var(--sp-4);
+}
+.hotam h4, .hotam .h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  color: var(--fg1);
+  margin: 0 0 var(--sp-3);
+}
+.hotam .lede {
+  font-size: var(--fs-lede);
+  color: var(--fg2);
+  line-height: 1.45;
+}
+.hotam p { margin: 0 0 var(--sp-4); color: var(--fg1); }
+.hotam small, .hotam .small { font-size: var(--fs-small); color: var(--fg2); }
+.hotam .eyebrow {
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hotam-blue);
+}
+.hotam .tagline { /* "אחריות לחינוך בישראל" style */
+  color: var(--hotam-blue);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.hotam a { color: var(--hotam-blue); text-decoration: none; }
+.hotam a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.hotam code, .hotam .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--hotam-bg-mute);
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+}
+
+/* Utility: brand gradient text */
+.hotam-gradient-text {
+  background: var(--hotam-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
